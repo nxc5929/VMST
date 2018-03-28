@@ -20,6 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-search/paper-search-bar.html">
 <link rel="import" href="my-icons.html">
 
 <link rel="lazy-import" href="my-dashboard.html">
@@ -49,6 +50,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
       }
+	  
+	  paper-search-bar{
+		width: 60%;
+		color: black;
+	  }
 
       .drawer-list {
         margin: 0 20px;
@@ -97,7 +103,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>Visual Math & Science</div>
+            <div main-title>
+				Visual Math & Science
+			</div>
+			<paper-search-bar id="searchBar" disable-filter-button=true placeholder="Search for Classes, Topics, or Groups"></paper-search-bar>
           </app-toolbar>
         </app-header>
 
@@ -143,6 +152,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           '_routePageChanged(routeData.page)',
         ];
       }
+	  
+	  ready(){
+		this.addEventListener('paper-search-search', this._test);
+		super.ready();
+	  }
 
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
@@ -168,6 +182,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _showPage404() {
         this.page = 'view404';
       }
+	  
+	  _test(){
+		var search = Polymer.dom(this.root).querySelector("#searchBar")
+		alert("TODO dearch by: " + search.query);
+	  }
     }
 
     window.customElements.define(MyApp.is, MyApp);
