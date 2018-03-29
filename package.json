@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
-	"start": "polymer serve"
+	"start": "node serve.js",
+    "start:dev": "polymer serve | browser-sync start --proxy localhost:8080 --files \"src/**/*.html,images/**/*.*\""
   }
 }
