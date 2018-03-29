@@ -7,28 +7,13 @@
     "src/my-homeworkGroup.html",
     "src/my-view404.html"
   ],
-  "sources": [
-    "images/**/*",
+  "sourceGlobs": [
     "src/**/*",
-	"bower.json"
+    "images/**/*",
+    "bower.json"
   ],
-  "extraDependencies": [
-    "bower_components/webcomponentsjs/*.js",
-    "!bower_components/webcomponentsjs/gulpfile.js",
-    "manifest.json"
-  ],
-  "lint": {
-    "rules": ["polymer-2"]
-  },
-  "builds": [
-    {
-      "preset": "es5-bundled"
-    },
-    {
-      "preset": "es6-bundled"
-    },
-    {
-      "preset": "es6-unbundled"
-    }
+  "includeDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
   ]
 }
