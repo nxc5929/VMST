@@ -16,9 +16,9 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "chat-window": "^0.6.1",
     "paper-search": "^2.0.9",
-    "paper-card": "polymerelements/paper-card#2.0-preview",
+    "paper-card": "polymerelements/paper-card#2.0",
     "px-tile": "^3.0.2",
-    "iron-flex-layout": "^2.0.3"
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.3"
   },
   "resolutions": {
     "polymer": "^2.0.0"
