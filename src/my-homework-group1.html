@@ -1,0 +1,88 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/chat-window/chat-window.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view11">
+  <template>
+    <style include="shared-styles">
+		:host {
+			display: block;
+			padding: 10px;
+		}	
+	  
+		.flex {
+			@apply --layout-vertical;
+			@apply --layout-wrap;
+		}
+		
+		.card{			
+			margin: 10px;
+		}
+		
+		.red{
+			background: red;
+			color: white;
+		}
+		
+		.blue{
+			background: blue;
+			color: white;
+		}
+    </style>
+
+    <div class="card">
+		<h1>Biology Brains</h1>
+		<div class="card-content flex">
+			<chat-window 
+				id="chat" 
+				author="me"
+				messages={{messages}}
+				auto-scroll>
+			</chat-window>
+		</div>
+    </div>
+  </template>
+  
+  <script>
+    class MyView11 extends Polymer.Element {
+		static get is() { return 'my-view11'; }
+	  
+		static get properties() {
+			return {
+				messages: {
+					type: Object,
+					value: [{"author": "you", "text": "Do you want to work on homework tonight at 8:00pm?", "created": Date.now()}]
+				}
+			}
+		}
+		
+		 ready() {
+			super.ready();
+			var chat = this.$.chat;
+			chat.messages = this.messages;
+			chat.addEventListener('send', function(e) {
+				chat.push('messages',{
+					author: "me",
+					text: e.detail,
+					created: Date.now()
+				});
+				chat.inputText = '';
+			});
+		}
+	}
+	
+    window.customElements.define(MyView11.is, MyView11);
+  </script>
+</dom-module>

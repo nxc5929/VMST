@@ -10,59 +10,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/px-tile/px-tile.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view3">
+<dom-module id="my-view4">
   <template>
     <style include="shared-styles">
-      :host {
+		:host {
 			display: block;
 			padding: 10px;
 		}	
 	  
 		.flex {
-			@apply --layout-horizontal;
+			@apply --layout-vertical;
 			@apply --layout-wrap;
 		}
 		
-		img{
-			width: 100%;
+		.card{			
+			margin: 10px;
 		}
 		
-		.tile{
-			margin: 10px;
+		.red{
+			background: red;
+			color: white;
+		}
+		
+		.blue{
+			background: blue;
+			color: white;
 		}
     </style>
 
-     <div class="card">
-      <h1>Homework Group</h1>
-	  <paper-card heading="Homework Groups">
-			<div class="card-content flex">
-				<div class="tile">
-				<a href="homework-group1">
-					<px-tile main-title="Biology Brains"
-						subtitle="Biology"
-						overlay-description="Click to go to group"
-						hoverable>
-						<div class="center" slot="thumbnail">
-							<img src="../images/team.png" />
-						</div>
-					</px-tile>
-				</a>
-				</div>
-			</div>
-		</paper-card>
+    <div class="card">
+		<h1>Chemistry Topics</h1>
+		<div class="card-content flex">
+			<a href="/topics-chem-basicAtom"><div class="card red">Basic Model of the Atom</div></a>
+			<a href="/topics-chem-statesMatter"><div class="card blue">States of Matter</div></a>	
 		</div>
     </div>
   </template>
 
   <script>
-    class MyView3 extends Polymer.Element {
-      static get is() { return 'my-view3'; }
+    class MyView4 extends Polymer.Element {
+      static get is() { return 'my-view4'; }
     }
 
-    window.customElements.define(MyView3.is, MyView3);
+    window.customElements.define(MyView4.is, MyView4);
   </script>
 </dom-module>

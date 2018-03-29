@@ -9,20 +9,69 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/px-tile/px-tile.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view2">
   <template>
     <style include="shared-styles">
-      :host {
-        display: block;
-
-        padding: 10px;
-      }
+		:host {
+			display: block;
+			padding: 10px;
+		}	
+	  
+		.flex {
+			@apply --layout-horizontal;
+			@apply --layout-wrap;
+		}
+		
+		img{
+			width: 100%;
+		}
+		
+		.tile{
+			margin: 10px;
+		}
     </style>
 
-     <div class="card">
-      <h1>Classes</h1>
+    <div class="card">
+		<h1>Classes</h1>
+		<div class="card-content flex">
+			<div class="tile">
+			<a href="/topics-biology">
+				<px-tile main-title="Biology"
+					overlay-description="Biology is the study of life. It includes an introduction to the scientific method, cytology, genetics, botany, zoology, ecology, taxonomy, evolution, chemistry, and microbiology. Click for topics"
+					hoverable>
+					<div class="center" slot="thumbnail">
+						<img src="../images/biology.png" />
+					</div>
+				</px-tile>
+			</a>
+			</div>
+			<div class="tile">
+			<a href="/topics-chemistry">
+				<px-tile main-title="Chemistry"
+					overlay-description="Chemistry curriculum is one of five science courses offered at the high school level. Students can expect to see various concepts being covered including the language of chemistry, phases of matter, chemical reactions, nuclear chemistry, and more."
+					hoverable>
+					<div class="center" slot="thumbnail">
+						<img src="../images/chemistry.png" />
+					</div>
+				</px-tile>
+			</a>
+			</div>
+			<div class="tile">
+			<a href="/topics-trigonometry">
+				<px-tile main-title="Trigonometry"
+					overlay-description="Trigonometry curriculum is one of five math courses offered at the high school level. Students can expect to see various concepts being covered including solving triangles, periodic functions, trigonometric functions, trigonometric identities, trigonometric equations, vector operations, and more."
+					hoverable>
+					<div class="center" slot="thumbnail">
+						<img src="../images/trigonometry.png" />
+					</div>
+				</px-tile>
+			</a>
+			</div>
+		</div>
     </div>
   </template>
 
