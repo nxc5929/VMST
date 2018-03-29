@@ -16,7 +16,9 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "chat-window": "^0.6.1",
-    "paper-search": "^2.0.9"
+    "paper-search": "^2.0.9",
+    "paper-card": "polymerelements/paper-card#2.0-preview",
+    "px-tile": "^3.0.2"
   },
   "resolutions": {
     "polymer": "^2.0.0"
