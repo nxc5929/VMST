@@ -8,6 +8,6 @@
   },
   "scripts": {
     "lint": "npm run lint:javascript && polymer lint",
-    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore"
   }
 }
