@@ -11,5 +11,8 @@
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
 	"start": "node serve.js",
     "start:dev": "polymer serve | browser-sync start --proxy localhost:8080 --files \"src/**/*.html,images/**/*.*\""
+  },
+  "dependencies": {
+    "express": "^4.14.1"
   }
 }
