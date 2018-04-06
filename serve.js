@@ -1,6 +1,20 @@
 const express = require('express');
-const app = express();
-app.use(express.static("" + __dirname + "/"));
+const SocketServer = require('ws').Server;
+const path = require('path');
 const port = process.env.PORT || 5000;
-app.listen(port);
-console.log('Running on port '+port);
+const app = express()
+    .use(express.static("" + __dirname + "/"))
+    .listen(port, () => console.log(`Listening on ${ port }`));
+
+
+const wss = new SocketServer({ "server": app });
+wss.on('connection', (ws) => {
+    console.log('Client connected');
+    ws.on('close', () => console.log('Client disconnected'));
+});
+
+setInterval(() => {
+    wss.clients.forEach((client) => {
+        client.send(new Date().toTimeString());
+    });
+}, 1000);
