@@ -42,47 +42,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		}
     </style>
 
-    <div class="card">
-		<h1>Biology Brains</h1>
-		<div class="card-content flex">
-			<chat-window 
-				id="chat" 
-				author="me"
-				messages={{messages}}
-				auto-scroll>
-			</chat-window>
-		</div>
-    </div>
+      <div class="card">
+          <h1>Biology Brains</h1>
+          <div class="card-content flex">
+              <chat-window
+                      id="chat"
+                      author="me"
+                      messages={{messages}}
+                      auto-scroll>
+              </chat-window>
+          </div>
+      </div>
   </template>
   
   <script>
-    class MyView11 extends Polymer.Element {
-		static get is() { return 'my-view11'; }
-	  
-		static get properties() {
-			return {
-				messages: {
-					type: Object,
-					value: [{"author": "you", "text": "Do you want to work on homework tonight at 8:00pm?", "created": Date.now()}]
-				}
-			}
-		}
-		
-		 ready() {
-			super.ready();
-			var chat = this.$.chat;
-			chat.messages = this.messages;
-			chat.addEventListener('send', function(e) {
-				chat.push('messages',{
-					author: "me",
-					text: e.detail,
-					created: Date.now()
-				});
-				chat.inputText = '';
-			});
-		}
-	}
-	
-    window.customElements.define(MyView11.is, MyView11);
+      class MyView11 extends Polymer.Element {
+          static get is() { return 'my-view11'; }
+
+          static get properties() {
+              return {
+                  messages: {
+                      type: Object,
+                      value: []
+                  }
+              }
+          }
+
+          ready() {
+              super.ready();
+              var chat = this.$.chat;
+              chat.messages = this.messages;
+              var HOST = location.origin.replace(/^http/, 'ws');
+              var ws = new WebSocket(HOST);
+              ws.onmessage = function (event) {
+                  chat.push('messages',{
+                      author: "me",
+                      text: event.data,
+                      created: Date.now()
+                  });
+              };
+          }
+      }
+
+      window.customElements.define(MyView11.is, MyView11);
+
+
+
   </script>
 </dom-module>
