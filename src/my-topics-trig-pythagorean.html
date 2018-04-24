@@ -10,6 +10,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
@@ -29,28 +31,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		.card{			
 			margin: 10px;
 		}
-		
-		.red{
-			background: red;
-			color: white;
+
+		img{
+			width: auto;
+			height: auto;
 		}
-		
-		.blue{
-			background: blue;
-			color: white;
+
+		.input{
+			width: 10%;
+			display: inline-block;
 		}
     </style>
 
     <div class="card">
 		<h1>Pythagorean Theruom</h1>
 		<div class="card-content flex">
-			<img src="../images/trig/pythagrium.png">
+			<img style="height: 400px" src="../images/trig/pythagrium.png">
 			<hr>
 			<p>
 			The Pythagorean theorem, also known as Pythagoras' theorem, is a fundamental relation in Euclidean geometry among the three sides of a right triangle. It states that the square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides. The theorem can be written as an equation relating the lengths of the sides a, b and c.
 			a^2+b^2=c^2
 			where c represents the length of the hypotenuse and a and b the lengths of the triangle's other two sides.
 			</p>
+			<h2>Practice</h2>
+			<h3>Problem 1</h3>
+			<img style="width: 25%" src="../images/trig/practiceProblem.gif">
+			<span>What is the value of c?</span>
+			<div hidden$="{{!showCorrect}}">
+				<span style="color: green;"><b>Correct</b></span>
+			</div>
+			<div hidden$="{{!showWrong}}">
+				<span style="color: red;"><b>Incorrect, please try again</b></span>
+			</div>
+			<paper-input class="input" id="cValue" label="C:" type="number"></paper-input><paper-button class="input" raised on-click="_check">Check</paper-button>
+
 		</div>
     </div>
   </template>
@@ -58,6 +72,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class MyView7 extends Polymer.Element {
       static get is() { return 'my-view7'; }
+
+      static get properties() {
+		  return {
+			  showCorrect: {
+			  	type: Boolean,
+				  value: false
+			  },
+			  showWrong: {
+			  	type: Boolean,
+				  value: false
+			  }
+		  };
+	  }
+
+      _check(){
+      	var value = this.$.cValue.value;
+		  if(value == 5){
+		  	this.showCorrect = true;
+			  this.showWrong = false;
+		  }else{
+		  	this.showWrong = true;
+			  this.showCorrect = false;
+		  }
+	  }
     }
 
     window.customElements.define(MyView7.is, MyView7);

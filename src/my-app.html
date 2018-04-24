@@ -19,6 +19,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../bower_components/iron-icons/device-icons.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-search/paper-search-bar.html">
 <link rel="import" href="my-icons.html">
@@ -100,9 +104,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="dashboard" href="[[rootPath]]dashboard">Dashboard</a>
-		  <a name="classes" href="[[rootPath]]classes">Classes</a>
-          <a name="homework" href="[[rootPath]]homeworkGroup">Homework Groups</a>
+          <a name="dashboard" href="[[rootPath]]dashboard"><iron-icon icon="icons:dashboard"></iron-icon>  Dashboard</a>
+		  <a name="classes" href="[[rootPath]]classes"><iron-icon icon="device:dvr"></iron-icon>  Classes</a>
+          <a name="homework" href="[[rootPath]]homeworkGroup"><iron-icon icon="communication:chat"></iron-icon>  Homework Groups</a>
 		</iron-selector>
       </app-drawer>
 
